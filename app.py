@@ -85,7 +85,7 @@ def save_config(config):
 config = load_config()
 
 # --- HEADER ---
-st.title("🖌️ Pinturas El Niño")
+st.title("Pinturas El Niño")
 st.markdown("### Generador de Presupuestos")
 
 # --- SIDEBAR (Settings) ---
@@ -113,13 +113,13 @@ with st.sidebar:
 # --- MAIN FORM ---
 
 # Client Data
-st.subheader("👤 Datos del Cliente")
+st.subheader("Datos del Cliente")
 col1, col2 = st.columns(2)
 with col1:
     client_name = st.text_input("Nombre del Cliente", help="Se usará para el nombre del archivo")
 
 # Services
-st.subheader("🛠️ Servicios")
+st.subheader("Servicios")
 
 # Add from favorites
 favorites = config.get("favorites", [])
@@ -154,7 +154,7 @@ else:
     st.info("Añade servicios para comenzar.")
 
 # Description
-st.subheader("📝 Descripción del Trabajo")
+st.subheader("Descripción del Trabajo")
 default_desc = (
             "Se sanearán las grietas y desconchones. Se aplicará una mano de fijador de cal y agua "
             "a las partes donde se haya quitado la pintura en mal estado o esté la pared virgen. "
