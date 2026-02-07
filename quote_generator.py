@@ -8,12 +8,22 @@ class QuotePDF(FPDF):
         super().__init__()
         self.logo_path = logo_path
         # Add Unicode fonts
-        # Check for Windows Arial
-        if os.path.exists("c:/windows/fonts/arial.ttf"):
+        # 1. Check for Bundled Fonts (Priority for Streamlit Cloud/Portable)
+        bundled_path = os.path.join(os.path.dirname(__file__), "fonts")
+        dejavu_reg = os.path.join(bundled_path, "DejaVuSans.ttf")
+        
+        if os.path.exists(dejavu_reg):
+            self.add_font("Arial", "", dejavu_reg, uni=True)
+            self.add_font("Arial", "B", os.path.join(bundled_path, "DejaVuSans-Bold.ttf"), uni=True)
+            self.add_font("Arial", "I", os.path.join(bundled_path, "DejaVuSans-Oblique.ttf"), uni=True)
+            
+        # 2. Check for Windows Arial
+        elif os.path.exists("c:/windows/fonts/arial.ttf"):
             self.add_font("Arial", "", "c:/windows/fonts/arial.ttf", uni=True)
             self.add_font("Arial", "B", "c:/windows/fonts/arialbd.ttf", uni=True)
             self.add_font("Arial", "I", "c:/windows/fonts/ariali.ttf", uni=True)
-        # Check for Linux Liberation Sans (Docker)
+            
+        # 3. Check for Linux Liberation Sans (Docker fallback)
         elif os.path.exists("/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf"):
             self.add_font("Arial", "", "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf", uni=True)
             self.add_font("Arial", "B", "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf", uni=True)
