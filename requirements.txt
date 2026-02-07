@@ -1,0 +1,5 @@
+fpdf2
+streamlit
+watchdog
+odfpy
+ttkbootstrap

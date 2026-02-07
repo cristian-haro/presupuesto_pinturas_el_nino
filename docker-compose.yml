@@ -1,0 +1,10 @@
+services:
+  webapp:
+    build: .
+    container_name: presupuestos_pinturas
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - DATA_DIR=/app/data
