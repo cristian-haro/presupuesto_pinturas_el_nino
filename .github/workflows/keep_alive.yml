@@ -1,0 +1,17 @@
+
+name: Keep Alive
+
+on:
+  schedule:
+    # Runs every 2 hours
+    - cron: '0 */2 * * *'
+  workflow_dispatch: # Allows manual run
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping App
+        run: |
+          # Replace with your app URL
+          curl -I https://presupuestopinturaselnino-dsl5jctknkyq893vhlzulc.streamlit.app/
